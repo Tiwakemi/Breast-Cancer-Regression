@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Breast Cancer Prediction</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>Breast Cancer Prediction</h1>
+
+        <form action="/predict" method="POST" class="prediction-form">
+            <div class="form-group">
+                <label for="user_name">Your Name:</label>
+                <input type="text" id="user_name" name="user_name" required />
+            </div>
+
+            <div class="form-group">
+                <label for="mean_radius">Mean Radius:</label>
+                <input type="number" step="any" id="mean_radius" name="mean_radius" required />
+            </div>
+
+            <div class="form-group">
+                <label for="mean_texture">Mean Texture:</label>
+                <input type="number" step="any" id="mean_texture" name="mean_texture" required />
+            </div>
+
+            <div class="form-group">
+                <label for="mean_perimeter">Mean Perimeter:</label>
+                <input type="number" step="any" id="mean_perimeter" name="mean_perimeter" required />
+            </div>
+
+            <div class="form-group">
+                <label for="mean_area">Mean Area:</label>
+                <input type="number" step="any" id="mean_area" name="mean_area" required />
+            </div>
+
+            <div class="form-group">
+                <label for="mean_smoothness">Mean Smoothness:</label>
+                <input type="number" step="any" id="mean_smoothness" name="mean_smoothness" required />
+            </div>
+
+            <div class="form-group">
+                <label for="mean_compactness">Mean Compactness:</label>
+                <input type="number" step="any" id="mean_compactness" name="mean_compactness" required />
+            </div>
+
+            <div class="form-group">
+                <label for="mean_concavity">Mean Concavity:</label>
+                <input type="number" step="any" id="mean_concavity" name="mean_concavity" required />
+            </div>
+
+            <div class="form-group">
+                <label for="mean_concave_points">Mean Concave Points:</label>
+                <input type="number" step="any" id="mean_concave_points" name="mean_concave_points" required />
+            </div>
+
+            <div class="form-group">
+                <label for="mean_symmetry">Mean Symmetry:</label>
+                <input type="number" step="any" id="mean_symmetry" name="mean_symmetry" required />
+            </div>
+
+            <div class="form-group">
+                <label for="mean_fractal_dimension">Mean Fractal Dimension:</label>
+                <input type="number" step="any" id="mean_fractal_dimension" name="mean_fractal_dimension" required />
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="submit-button">Predict</button>
+            </div>
+        </form>
+
+        {% if prediction is defined %}
+        <div class="result">
+            <h2>Prediction: {{ prediction }}</h2>
+        </div>
+        {% endif %}
+
+        <p class="view-link">
+            <a href="{{ url_for('output') }}">View Database of Predictions</a>
+        </p>
+    </div>
+</body>
+</html>
